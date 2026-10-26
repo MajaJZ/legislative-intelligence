@@ -1,0 +1,65 @@
+@import "@fontsource-variable/source-serif-4";
+@import "@fontsource-variable/inter";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/600.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background: #f7f5ef;
+  color: #14181c;
+  font-family: "Inter Variable", system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv11";
+}
+
+h1, h2, h3 {
+  font-family: "Source Serif 4 Variable", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.data {
+  font-family: "IBM Plex Mono", monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+a {
+  color: #1e4a5a;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: #14181c;
+}
+
+:focus-visible {
+  outline: 2px solid #1e4a5a;
+  outline-offset: 2px;
+}
+
+button, .btn {
+  border-radius: 2px;
+  font-weight: 600;
+  padding: 0.625rem 1rem;
+  border: 1px solid #14181c;
+  background: #14181c;
+  color: #f7f5ef;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: transparent;
+  color: #14181c;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
