@@ -25,7 +25,7 @@ jobs:
       - name: Run Pipeline
         run: |
           cd app/worker
-          python run_pipeline.py
+          PYTHONPATH=. python run_pipeline.py
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
