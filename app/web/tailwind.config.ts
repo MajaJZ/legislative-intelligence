@@ -1,36 +1,26 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
+  content: [
+    "./app/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
-        paper: "#F7F5EF",
-        ink: "#14181C",
-        muted: "#5B6570",
-        line: "#D6D2C8",
-        accent: "#1E4A5A",
-        warn: "#8A3B2E",
-        positive: "#2F6B4F",
+        navy: "#0F172A",
+        slate: "#475569",
+        accent: "#0EA5E9", /* Sharp, professional blue */
         panel: "#FFFFFF",
-      },
-      fontFamily: {
-        serif: ["Source Serif 4 Variable", "Georgia", "serif"],
-        sans: ["Inter Variable", "system-ui", "sans-serif"],
-        mono: ["IBM Plex Mono", "monospace"],
+        border: "#E2E8F0",
       },
       borderRadius: {
-        DEFAULT: "2px",
+        DEFAULT: "2px", /* Sharp corners, no pills */
         sm: "2px",
         md: "2px",
-        lg: "2px",
-      },
-      boxShadow: {
-        none: "none",
       },
     },
   },
   plugins: [],
 };
-
 export default config;
