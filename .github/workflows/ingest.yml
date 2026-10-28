@@ -1,0 +1,31 @@
+name: Nightly Data Ingestion
+
+on:
+  schedule:
+    - cron: "0 3 * * *" # Runs every day at 3 AM UTC
+  workflow_dispatch: # Allows you to run it manually
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          
+      - name: Install dependencies
+        run: |
+          pip install -r apps/worker/requirements.txt
+          python -m spacy download en_core_web_sm
+          
+      - name: Run Pipeline
+        run: python apps/worker/run_pipeline.py
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          FEC_API_KEY: "placeholder" 
+          LDA_API_KEY: "placeholder"
