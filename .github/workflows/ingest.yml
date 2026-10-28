@@ -9,18 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          
       - name: Install dependencies
         run: |
-          cd app/worker
-          pip install -r requirements.txt
-          python -m spacy download en_core_web_sm
-          
+          pip install httpx supabase tenacity spacy
       - name: Run Pipeline
         run: |
           cd app/worker
@@ -29,5 +24,3 @@ jobs:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-          FEC_API_KEY: "placeholder"
-          LDA_API_KEY: "placeholder"
