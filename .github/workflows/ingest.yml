@@ -2,8 +2,8 @@ name: Nightly Data Ingestion
 
 on:
   schedule:
-    - cron: "0 3 * * *" # Runs every day at 3 AM UTC
-  workflow_dispatch: # Allows you to run it manually
+    - cron: "0 3 * * *" 
+  workflow_dispatch: 
 
 jobs:
   ingest:
@@ -18,11 +18,11 @@ jobs:
           
       - name: Install dependencies
         run: |
-          pip install -r apps/worker/requirements.txt
+          pip install -r worker/requirements.txt
           python -m spacy download en_core_web_sm
           
       - name: Run Pipeline
-        run: python apps/worker/run_pipeline.py
+        run: python worker/run_pipeline.py
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
