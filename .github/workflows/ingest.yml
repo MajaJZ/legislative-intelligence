@@ -1,5 +1,4 @@
 name: Nightly Data Ingestion
-
 on:
   schedule:
     - cron: "0 3 * * *"
@@ -25,7 +24,7 @@ jobs:
       - name: Run Pipeline
         run: |
           cd app/worker
-          PYTHONPATH=. python run_pipeline.py
+          python run_pipeline.py
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
