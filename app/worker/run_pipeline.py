@@ -1,3 +1,9 @@
+import sys
+import os
+
+# This line forces Python to look in the current folder for 'ingest' and 'analyze'
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 import asyncio
 import httpx
 from ingest.congress import ingest_members, ingest_bills
@@ -20,19 +26,13 @@ async def main():
 
     # 2. Fetch Lobbying Data (Senate LDA)
     print("Fetching Lobbying Filings...")
-    await ingest_filings(year=2025, max_pages=3) # Limit pages to keep it fast for testing
+    await ingest_filings(year=2025, max_pages=3)
 
-    # 3. Fetch Campaign Contributions (FEC)
-    print("Fetching FEC Contributions...")
-    # We skip this for the first test to avoid rate limits, 
-    # but you can uncomment it later.
-    # await ingest_all(candidate_ids=["H0NY01234"], cycle=2024) 
-
-    # 4. Run NLP Analysis
+    # 3. Run NLP Analysis
     print("Processing Bill Text (NLP)...")
     process_bills(limit=50)
 
-    # 5. Compute Correlation Scores
+    # 4. Compute Correlation Scores
     print("Calculating Influence Scores...")
     compute_scores()
 
