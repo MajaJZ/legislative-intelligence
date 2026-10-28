@@ -18,14 +18,17 @@ jobs:
           
       - name: Install dependencies
         run: |
-          pip install -r worker/requirements.txt
+          cd app/worker
+          pip install -r requirements.txt
           python -m spacy download en_core_web_sm
           
       - name: Run Pipeline
-        run: python worker/run_pipeline.py
+        run: |
+          cd app/worker
+          python run_pipeline.py
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-          FEC_API_KEY: "placeholder" 
+          FEC_API_KEY: "placeholder"
           LDA_API_KEY: "placeholder"
