@@ -2,8 +2,8 @@ name: Nightly Data Ingestion
 
 on:
   schedule:
-    - cron: "0 3 * * *" 
-  workflow_dispatch: 
+    - cron: "0 3 * * *"
+  workflow_dispatch:
 
 jobs:
   ingest:
